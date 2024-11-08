@@ -22,7 +22,7 @@ const upload = multer({ storage });
 
 // Route for uploading images
 app.post('/upload', upload.array('images'), (req, res) => {
-  const imagePaths = req.files.map(file => `http://localhost:5000/${file.filename}`);
+  const imagePaths = req.files.map(file => `https://bismillah-butter.onrender.com/${file.filename}`);
   res.json({ images: imagePaths });
 });
 
@@ -35,11 +35,11 @@ app.get('/images', (req, res) => {
     if (err) {
       return res.status(500).send("Unable to scan directory");
     }
-    const images = files.map(file => `http://localhost:5000/${file}`);
+    const images = files.map(file => `https://bismillah-butter.onrender.com/${file}`);
     res.json({ images });
   });
 });
 
 app.listen(5000, () => {
-  console.log('Server is running on http://localhost:5000');
+  console.log('Server is running on https://bismillah-butter.onrender.com');
 });
